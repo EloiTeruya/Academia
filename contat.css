@@ -1,0 +1,110 @@
+body{
+    background-image: url(contatos.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.m{
+    margin-left: 50px;
+    color: #f6f6fa;
+    text-decoration: none;
+}
+#menu{
+    margin-top: 30px;
+    margin-left: 900px;
+    display:flex;
+    font-size: 16pt;
+}
+#dados{
+    margin-left: 500px;
+    
+}
+.c{
+    color: rgb(185, 91, 9);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 32pt;
+    margin-top: -40px;
+    margin-left: 140px;
+    
+}
+.d{
+    color:rgb(17, 221, 41);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14pt;
+    margin-left: 150px;
+    margin-top: -15px;
+   
+}
+.e{
+    color: rgb(17, 221, 41);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 32pt;
+    margin-left: 100px;
+   
+}
+.f{
+    color: rgb(185, 91, 9);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 32pt;
+    margin-top: -25px;
+    margin-left: 130px;
+    
+}
+.g{
+    margin-left: 400px;
+    margin-top: -1100px;
+    width: 10%;
+}
+.social-icons {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+    margin-top: -200px;
+    height: 36px;
+}
+.social-icon {
+    min-height: 40px;
+    background: var(--c);
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    min-width: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 28px;
+    box-shadow: 0px 4px 8px #0c0b0b00;
+    transition: all 0.2s ease;
+    border: none;
+    outline: none;
+    margin-top: 200px;
+    height: 50px;
+}
+.social-icon:hover {
+    box-shadow: 0px 4px 14px #0000007a;
+}
+.social-icon:focus {
+    box-shadow: 0px 0px 0px 2px currentColor;
+    transform: scale(.9);
+}
+.social-icon * {
+    pointer-events: none;
+    fill: #fff;
+}
+.social-icon.fb {
+    --c: #4267B2;
+}
+.social-icon.pr {
+    --c: #E60023;
+}
+.social-icon.in {
+    --c: #5B51D8;
+}
+.meta-text {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: white;
+    margin-left: 652px;
+    margin-top: 300px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

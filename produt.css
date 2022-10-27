@@ -1,0 +1,111 @@
+body{
+    background-image: url(produtos.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding: auto;
+    width: 100%;
+    background-size: 100%;
+}
+.mal{
+    display: flex;
+    padding: 15px;
+    width: 250px;
+    margin-left: 100px;
+
+}
+p{
+    color: white;
+    display: flex;
+    margin-left: 115px;
+    margin-top: -10px;
+    align-items: flex-start;
+}
+#titulo{
+    width: 100%;
+    text-align: center;
+    padding: 50px  500px;
+    font-size: 34pt;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+#conh{
+    margin-left: 120px;
+    font-size: 14pt;
+
+}
+footer{
+    display: flex;
+    background-color: black;
+    width: 100%;
+    margin-left:-10px;
+    opacity: 0.9;
+    margin-top: -30px;
+   
+    
+}
+.creatina{
+    display: flex;
+    padding: px;
+    width: 240px;
+    margin-left: 60px;
+    margin: 0px 80px 30px;
+    
+
+}
+.camp{
+    display: flex;
+    padding: 13px;
+    width: 240px;
+    margin-left: 40px;
+
+}
+.camb{
+    display: flex;
+    padding: 15px;
+    width: 250px;
+    margin-left: 60px;
+   
+   
+
+}
+#malt{
+    margin-left: 200px;
+}
+#crea{
+    margin-left: 160px;
+}
+.i{
+    margin-top: -10px;
+}
+.a{
+    margin: 1px 55px;
+    margin-top: -5px;
+}
+#camip{
+    margin-left: 140px;
+}
+.e{
+    margin-left: 120px;
+    margin-top: -15px;
+}
+#camib{
+    margin-left: 170px;
+    
+    
+}  
+#menu{
+    margin-top: 40px;
+    margin-left: 870px;
+    display:flex;
+    font-size: 16pt;
+}  
+a{
+    color: white;
+    padding: 18px;
+    text-decoration: none;
+    margin-top: -30px;
+    
+}
+.m{
+    margin-top: 10px;
+}
