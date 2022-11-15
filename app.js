@@ -4,6 +4,7 @@ const app = express();
 const db = require('./models/db');
 const bodyParser = require("body-parser")
 
+
 const port = 8000;
 
 app.use(express.json());
@@ -11,9 +12,22 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json())
-app.get('cadastro', function(req, res){
-    res.render('cadastro.html');
+
+
+app.get('', function(req, res){
+    res.render('/academia/tela_cadastro/index.java.html')
+    res.send("ola mundo");
 })
+app.post('/academia/retorno/retorno.html', function(req, res){
+    res.send("Nome: " + req.body.firstname + 
+    "<br>Sobrenome: "+req.body.lastname + 
+    "<br>E_mail:" + req.body.email + 
+    "<br>Celular:" + req.body.number + 
+    "<br>Senha:" + req.body.password + 
+    "<br>Confirme a senha:" + req.body.confirmPassword +
+    "<br>Gênero:"+ req.body.genero + "<br>Confirme seu Plano:" +req.body.gender)
+})
+
 app.get('areadoaluno.html', function(req,res){
     res.render('cadastro.html');
 })
