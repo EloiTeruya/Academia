@@ -16,6 +16,8 @@ app.use(bodyParser.json())
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "views")));
 
+
+
 app.get('/', function(req, res){
    res.render('academia/tela_cadastro/index.ejs');
    
@@ -47,7 +49,8 @@ app.post('/areaaluno', function(req, res){
     "<br>Confirme a senha:" + req.body.confirmPassword +
     "<br>Gênero:"+ req.body.genero + 
     "<br>Confirme seu Plano:" +req.body.plano)
-    
+
+        
 })
 
 
@@ -336,6 +339,148 @@ app.put('/produto/:id', (req,res)=>{
             res.status(400).send({message:error});
         }else{
             res.status(201).json({message: "Produto alterado com sucesso!"});
+        } 
+    });
+})
+
+
+
+// cadastrar pedido // cadastrar pedido // cadastrar pedido //
+
+
+// get pesquisa geral//
+app.get('/pedido',(req, res)=>{
+    let cmd_selectAll = "SELECT * FROM PEDIDO;";
+    db.query(cmd_selectAll,(err, rows)=>{
+        console.log(err);
+        res.status(200).json(rows);
+
+    });
+});
+// get por id é pesquisa de um po um, '/pedido/:id'//
+app.get('/pedido/:id',(req, res)=>{
+    let id = req.params.id;
+    let cmd_selectId = "SELECT * FROM PEDIDO WHERE ID = ?";
+    db.query(cmd_selectId, id,(err, row)=>{
+        res.status(200).json(row);    
+    });
+});
+
+// criamos este post, para gravar esses dois dados no postman e do postman vai para o SQlworkend//
+
+app.post('/pedido', (req, res)=>{
+    let dados = req.body;
+    let cmd_insert = "INSERT INTO PEDIDO (id_pedido,id, nome, sobrenome, e_email, celular,dt_pedido) VALUES (?,?,?,?,?,?,?)";
+    let dados_body = [dados.id_pedido, dados.id, dados.nome, dados.sobrenome, dados.e_email, dados.celular, dados.dt_pedido];
+
+    db.query(cmd_insert, dados_body,(error, result)=>{
+        if(error){
+            res.status(400).send({message:error});
+        }else{
+            res.status(201).json({message: "Pedido salvo com sucesso!"});
+        } 
+    });
+});
+
+//delete através do id//
+
+app.delete('/pedido/:id',(req, res)=>{
+    let id = req.params.id;
+    let cmd_delete = "DELETE FROM PEDIDO WHERE ID = ?";
+
+    db.query(cmd_delete,id,(error,result)=>{
+        if(error){
+            res.status(400).send({message:error});
+        }else{
+            res.status(201).json({message: "Pedido excluido com sucesso"});
+        }    
+        
+    });
+});
+
+// para alterar um contato pelo id//
+
+app.put('/pedido/:id', (req,res)=>{
+    let dados = req.body;
+    let id = req.params.id;
+    let cmd_update = "UPDATE PEDIDO SET ID = ?, NOME = ?, SOBRENOME = ?, E_EMAIL = ?, CELULAR = ?, DT_PEDIDO = ? WHERE ID_PEDIDO = ?";
+    let dados_body = [dados.id, dados.nome, dados.sobrenome, dados.e_email, dados.celular, dados.dt_pedido, id_pedido];
+
+    db.query(cmd_update, dados_body,(error, result)=>{
+        if(error){
+            res.status(400).send({message:error});
+        }else{
+            res.status(201).json({message: "Pedido alterado com sucesso!"});
+        } 
+    });
+})
+
+// cadastrar cartao // cadastrar cartao // cadastrar cartao //
+
+
+// get pesquisa geral//
+app.get('/cartao',(req, res)=>{
+    let cmd_selectAll = "SELECT * FROM CARTAO;";
+    db.query(cmd_selectAll,(err, rows)=>{
+        console.log(err);
+        res.status(200).json(rows);
+
+    });
+});
+// get por id é pesquisa de um po um, '/cartao/:id'//
+app.get('/cartao/:numero',(req, res)=>{
+    let id = req.params.numero;
+    let cmd_selectId = "SELECT * FROM CARTAO WHERE NUMERO = ?";
+    db.query(cmd_selectId, numero,(err, row)=>{
+        res.status(200).json(row);    
+    });
+});
+
+// criamos este post, para gravar esses dois dados no postman e do postman vai para o SQlworkend//
+
+app.post('/cartao', (req, res)=>{
+    let dados = req.body;
+    let cmd_insert = "INSERT INTO CARTAO ( tipo, nome, validade, codigo, numero) VALUES (?,?,?,?,?)";
+    let dados_body = [dados.tipo, dados.nome, dados.validade, dados.codigo, dados.numero];
+
+    db.query(cmd_insert, dados_body,(error, result)=>{
+        if(error){
+            res.status(400).send({message:error});
+        }else{
+            res.status(201).json({message: "Cartâo salvo com sucesso!"});
+        } 
+    });
+});
+
+//delete através do id//
+
+app.delete('/cartao/:numero',(req, res)=>{
+    let id = req.params.numero;
+    let cmd_delete = "DELETE FROM CARTAO WHERE NUMERO = ?";
+
+    db.query(cmd_delete,numero,(error,result)=>{
+        if(error){
+            res.status(400).send({message:error});
+        }else{
+            res.status(201).json({message: "Cartão excluido com sucesso"});
+        }    
+        
+    });
+});
+
+// para alterar um cartao pelo id//
+
+app.put('/cartao/:numero', (req,res)=>{
+    let dados = req.body;
+    let id = req.params.numero;
+    let cmd_update = "UPDATE CARTAO SET TIPO = ?, NOME = ?, VALIDADE = ?, CODIGO = ? WHERE ID = ?";
+    let dados_body = [dados.tipo, dados.nome, dados.validade, dados.codigo, id];
+
+    db.query(cmd_update, dados_body,(error, result)=>{
+        if(error){
+            res.status(400).send({message:error});
+        }else{
+            res.status(201).json({message: "Cartão alterado com sucesso!"});
         } 
     });
 })
