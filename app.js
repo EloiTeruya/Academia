@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const db = require('./models/db');
 const bodyParser = require("body-parser")
-
+const path = require("path");
 
 const port = 8000;
 
@@ -13,27 +13,44 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json())
 
+app.set("view engine", "ejs");
+app.use(express.static(path.join(__dirname, "views")));
 
-app.get('', function(req, res){
-    res.render('/academia/tela_cadastro/index.java.html')
-    res.send("ola mundo");
-})
-app.post('/academia/retorno/retorno.html', function(req, res){
+app.get('/', function(req, res){
+   res.render('academia/tela_cadastro/index.ejs');
+   
+    
+});
+app.post('/areaaluno', function(req, res){
+   let cmd_insert = "insert into cadastro(nome, sobrenome, e_mail,celular, senha, conf_senha, sexo, conf_plano) values (?,?,?,?,?,?,?,?) "
+   let dados_body = [req.body.firstname,
+                     req.body.lastname,
+                     req.body.email,
+                     req.body.number,
+                     req.body.password,
+                     req.body.confirmPassword,
+                     req.body.genero,
+                     req.body.plano
+
+] 
+
+    db.query(cmd_insert, dados_body,(error, result)=>{
+        if(error){
+            console.log(error)
+        }
+    });
     res.send("Nome: " + req.body.firstname + 
     "<br>Sobrenome: "+req.body.lastname + 
     "<br>E_mail:" + req.body.email + 
     "<br>Celular:" + req.body.number + 
     "<br>Senha:" + req.body.password + 
     "<br>Confirme a senha:" + req.body.confirmPassword +
-    "<br>Gênero:"+ req.body.genero + "<br>Confirme seu Plano:" +req.body.gender)
+    "<br>Gênero:"+ req.body.genero + 
+    "<br>Confirme seu Plano:" +req.body.plano)
+    
 })
 
-app.get('areadoaluno.html', function(req,res){
-    res.render('cadastro.html');
-})
-app.post('cadastro.html', function(req, res){
-    res.send("Primeiro Nome: " + req.body.firstname + "<br>Sobrenome:" + req.body.lastname + "<br>")
-});
+
 
 app.listen(port,()=>{
     console.log("Projeto executando:" + port);
